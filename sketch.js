@@ -34,6 +34,7 @@ function setup() {
   game = new Game();
   game.getState();
   game.start();
+  
   player1 = createSprite(200,displayHeight);
   player1.addImage(player_img);
   player1.scale = .2;

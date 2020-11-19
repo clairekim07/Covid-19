@@ -1,6 +1,6 @@
 class Game{
     constructor(){
-
+        
     }
     getState() {
         var gameStateRef = database.ref('gameState');
@@ -45,6 +45,7 @@ class Game{
         }
     play(){
         
+        
         form.hide();
 
         Player.getPlayerInfo();
@@ -53,8 +54,8 @@ class Game{
         var x =100;
         var y=200;
         var index =0;
-
         
+        //scores = [score,score2];
 
         drawSprites();
         for(var plr in allPlayers){
@@ -77,11 +78,13 @@ class Game{
                     
         fill("white");
         textSize(35);
-        
+        text("Player1 score: " + allPlayers.player1.score,50,50);
+        text("Player1 score: " + allPlayers.player2.score,50,100);
+         
 
                  }
 
-                
+                 
                  
                  if (keyIsDown(RIGHT_ARROW) && player.index !== null) {
                     player.distance -= 30
@@ -103,6 +106,7 @@ class Game{
                              { 
                                 maskGroup.get(m).destroy(); 
                                 score++;
+                                player.update();
                                 
                                  
                              } 
@@ -113,7 +117,7 @@ class Game{
                              { 
                                 virusGroup.get(i).destroy(); 
                                 score = score -1;
-                                 
+                                player.update();
                              } 
                          } 
                      
@@ -130,7 +134,7 @@ class Game{
                              { 
                                 maskGroup.get(m).destroy(); 
                                 score2++;
-                                 
+                                player.update();
                              } 
                          } 
                          for (var i = 0; i < virusGroup.length; i++) 
@@ -139,10 +143,12 @@ class Game{
                              { 
                                 virusGroup.get(i).destroy(); 
                                 score2 = score2 -1;
-                                 
+                                player.update();
                              } 
                          } 
                      }
+                 
+                     
 
 
                   

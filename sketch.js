@@ -12,11 +12,11 @@ var virus_img, mask_img;
 var virus2_img, mask2_img;
 var player_img;
 var score = 0;
-var score2 = 0;
+//var score2 = 0;
 var info1_img;
 var info2_img;
 var info23img;
-
+//var scores;
 function preload(){
   back_img = loadImage("images/back.png");
   player_img = loadImage("images/female.png");
@@ -61,7 +61,7 @@ function setup() {
 function draw() {
   background(back_img);
   
-   if (playerCount === 1) {
+   if (playerCount === 2) {
      game.update(1);
    }
    if (gameState === 1) {
@@ -91,8 +91,7 @@ function draw() {
    drawSprites();
    fill("black");
    textSize(20);
-   text("score: " + score,displayWidth/4,displayHeight/4);
-   text("score: " + score2,displayWidth/4 + 200,displayHeight/4);
+   
    spawnVirus();
    spawnMask();
   }

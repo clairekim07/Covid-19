@@ -10,6 +10,7 @@ class Game{
 
     }
 
+    
     update(state) {
         database.ref('/').update({
         gameState: state
@@ -29,17 +30,31 @@ class Game{
         
 
         }
+    info(){
+        form.hide();
+        image(info1_img, 0, 0, displayWidth,displayHeight);
+
+        }
+    info2(){
+        image(info2_img, 0, 0, displayWidth,displayHeight);
     
+       }
+    info3(){
+        image(info3_img, 0, 0, displayWidth,displayHeight);
+        
+        }
     play(){
         
         form.hide();
 
         Player.getPlayerInfo();
-        image(back_img, 0, 0, 1000, 800);
+        image(back_img, 0, 0, displayWidth,displayHeight);
 
         var x =100;
         var y=200;
         var index =0;
+
+        
 
         drawSprites();
         for(var plr in allPlayers){
@@ -78,8 +93,7 @@ class Game{
                 }
             
                  
-                  if (player1 !== null) 
-                  {
+                  
                      //fill code here, to destroy the objects.
                      if (player1 !== null) 
                      { 
@@ -89,6 +103,7 @@ class Game{
                              { 
                                 maskGroup.get(m).destroy(); 
                                 score++;
+                                
                                  
                              } 
                          } 
@@ -101,12 +116,11 @@ class Game{
                                  
                              } 
                          } 
-                     }
+                     
 
 
                   }
-                  if (player2 !== null) 
-                  {
+                 
                      //fill code here, to destroy the objects.
                      if (player2 !== null) 
                      { 
@@ -131,7 +145,7 @@ class Game{
                      }
 
 
-                  }
+                  
 
     }
 

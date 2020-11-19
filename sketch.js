@@ -13,6 +13,9 @@ var virus2_img, mask2_img;
 var player_img;
 var score = 0;
 var score2 = 0;
+var info1_img;
+var info2_img;
+var info23img;
 
 function preload(){
   back_img = loadImage("images/back.png");
@@ -22,7 +25,9 @@ function preload(){
   mask_img = loadImage("images/mask.png");
   virus2_img = loadImage("images/virus2.png");
   mask2_img = loadImage("images/hand.png");
-  
+  info1_img = loadImage("images/info1.png");
+  info2_img = loadImage("images/info2.png");
+  info3_img = loadImage("images/info3.png");
   virusGroup = new Group();
   maskGroup = new Group();
 }
@@ -34,7 +39,7 @@ function setup() {
   game = new Game();
   game.getState();
   game.start();
-  
+
   player1 = createSprite(200,displayHeight);
   player1.addImage(player_img);
   player1.scale = .2;
@@ -56,7 +61,7 @@ function setup() {
 function draw() {
   background(back_img);
   
-   if (playerCount === 2) {
+   if (playerCount === 1) {
      game.update(1);
    }
    if (gameState === 1) {
@@ -68,20 +73,35 @@ function draw() {
      game.end();
    } 
    
-   spawnVirus();
-   spawnMask();
+   if (gameState === 3) {
+    
+    game.info();
+  } 
+  if (gameState === 4) {
+    
+    game.info2();
+  } 
+
+  if (gameState === 5) {
+    
+    game.info3();
+  } 
+
+   if(gameState === 1){
    drawSprites();
    fill("black");
    textSize(20);
    text("score: " + score,displayWidth/4,displayHeight/4);
    text("score: " + score2,displayWidth/4 + 200,displayHeight/4);
-
+   spawnVirus();
+   spawnMask();
+  }
 }
 function spawnVirus(){
   if (frameCount % 20 === 0 && gameState === 1) {
     virus = createSprite(random(100, displayWidth), 0, 100, 100);
     virus.velocityY = 6;
-    virus.scale = .05;
+    virus.scale = .03;
     var rand = Math.round(random(1,2));
     switch(rand){
         case 1: virus.addImage("virus",virus_img);

@@ -11,7 +11,7 @@ var virusGroup,maskGroup;
 var virus_img, mask_img;
 var virus2_img, mask2_img;
 var player_img;
-var score = 0;
+var score;
 //var score2 = 0;
 var info1_img;
 var info2_img;
@@ -51,7 +51,7 @@ function setup() {
   player2.addImage(player2_img);
   player2.scale = .2;
   
-  player2.debug = true;
+  //player2.debug = true;
   player2.setCollider("rectangle",0,0,player2.width,player2.height);
 
   players=[player1,player2];
@@ -61,9 +61,10 @@ function setup() {
 function draw() {
   background(back_img);
   
-   if (playerCount === 2) {
+   if (playerCount === 2 && gameState === 1) {
      game.update(1);
    }
+   
    if (gameState === 1) {
      clear(); 
      game.play();
@@ -87,17 +88,58 @@ function draw() {
     game.info3();
   } 
 
+  if (gameState === 6) {
+    
+    game.numplr();
+  } 
+
+  if (gameState === 7) {
+    
+    game.oneplr();
+  }
+  
+  if (gameState === 9) {
+    
+    game.onecool();
+  }
+  if (gameState === 10) {
+    
+    game.onesafe();
+  }
+  if (gameState === 11) {
+    
+    game.twosafe();
+  }
+  if (gameState === 12) {
+    
+    game.twocool();
+  }
+  if (gameState === 13) {
+    
+    game.play1s();
+    spawnVirus();
+   spawnMask();
+  }
+  if (gameState === 14) {
+    drawSprites();
+   
+    game.play1c();
+    spawnVirus();
+   spawnMask();
+  }
+
+
    if(gameState === 1){
    drawSprites();
    fill("black");
    textSize(20);
-   
+   game.play();
    spawnVirus();
    spawnMask();
   }
 }
 function spawnVirus(){
-  if (frameCount % 20 === 0 && gameState === 1) {
+  if (frameCount % 20 === 0 && gameState === 1 ||frameCount % 20 === 0 && gameState === 14||frameCount % 20 === 0 && gameState === 13) {
     virus = createSprite(random(100, displayWidth), 0, 100, 100);
     virus.velocityY = 6;
     virus.scale = .03;
@@ -115,7 +157,7 @@ function spawnVirus(){
 }
 
 function spawnMask(){
-  if (frameCount % 20 === 0 && gameState === 1) {
+  if (frameCount % 20 === 0 && gameState === 1||frameCount % 20 === 0 && gameState === 13||frameCount % 20 === 0 && gameState === 14) {
     mask = createSprite(random(100, displayWidth), 0, 100, 100);
     mask.velocityY = 6;
     mask.scale = .05;

@@ -36,8 +36,8 @@ class Game{
     }
     oneplr(){
         image(back_img, 0, 0, displayWidth,displayHeight);
-        image(player_img,600,150,50,100)
-        image(player2_img,900,150,50,100)
+        image(player_img,680,150,70,150)
+        image(player2_img,980,150,70,150)
     }
     
     onesafe(){

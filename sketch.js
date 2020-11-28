@@ -12,6 +12,7 @@ var virus_img, mask_img;
 var virus2_img, mask2_img;
 var player_img;
 var score;
+var song,song2;
 //var score2 = 0;
 var info1_img;
 var info2_img;
@@ -28,6 +29,8 @@ function preload(){
   info1_img = loadImage("images/info1.png");
   info2_img = loadImage("images/info2.png");
   info3_img = loadImage("images/info3.png");
+  song = loadSound("song/dance.mp3");
+  song2 = loadSound("song/elevate.mp3");
   virusGroup = new Group();
   maskGroup = new Group();
 }

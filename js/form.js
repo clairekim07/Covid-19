@@ -66,9 +66,9 @@ class Form{
         //this.input.style('height', '20px');
         //this.input.style('background', 'beige');
         //1 player
-        this.button.position(550,400);
-        this.button.style('width', '120px');
-        this.button.style('height', '30px');
+        this.button.position(600,400);
+        this.button.style('width', '220px');
+        this.button.style('height', '50px');
         this.button.style('background', 'DodgerBlue');
         //Play Game
         this.button1.position(900,400);
@@ -101,19 +101,19 @@ class Form{
         this.reset.style('height', '30px');
         this.reset.style('background', 'DodgerBlue');
         //Multi-player
-        this.button6.position(800,400);
-        this.button6.style('width', '120px');
-        this.button6.style('height', '30px');
+        this.button6.position(900,400);
+        this.button6.style('width', '220px');
+        this.button6.style('height', '50px');
         this.button6.style('background', 'DodgerBlue');
         //1
-        this.button7.position(650,400);
-        this.button7.style('width', '120px');
-        this.button7.style('height', '30px');
+        this.button7.position(600,400);
+        this.button7.style('width', '220px');
+        this.button7.style('height', '50px');
         this.button7.style('background', 'DodgerBlue');
         //2
         this.button8.position(900,400);
-        this.button8.style('width', '120px');
-        this.button8.style('height', '30px');
+        this.button8.style('width', '220px');
+        this.button8.style('height', '50px');
         this.button8.style('background', 'DodgerBlue');
         //Back
         this.button9.position(850,displayHeight+50);
@@ -145,6 +145,7 @@ class Form{
             this.button8.hide();
             playerCount += 1;
             player.index = playerCount;
+            song2.play();
             player.update();
             player.updateCount(playerCount);
         });
@@ -152,6 +153,7 @@ class Form{
             game.update(13);
             this.button7.hide();
             this.button8.hide();
+            song.play();
             playerCount += 1;
             player.index = playerCount;
             player.update();
@@ -196,6 +198,8 @@ class Form{
             this.button3.hide();
             this.button4.show();
             this.button9.show();
+            song.stop();
+            song2.stop();
             game.update(4);
         });
         //1 player
